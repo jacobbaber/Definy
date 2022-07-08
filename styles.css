@@ -1,0 +1,16 @@
+body,
+html {
+  background-color: #151515;
+  height: 100%;
+}
+
+.definy-logo {
+  color: white;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: xx-large;
+  letter-spacing: 1px;
+}
+
+.nav-container {
+  padding: 0;
+}
