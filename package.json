@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "bootstrap": "^5.2.0-beta1"
+    "bootstrap": "^5.2.0-beta1",
+    "google-dictionary-api": "^1.0.8"
   }
 }
