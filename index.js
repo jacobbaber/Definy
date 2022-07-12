@@ -3004,7 +3004,25 @@ const words = [
 const selectWord = () => {
   let randomNum = Math.floor(Math.random() * 3000);
   let selectedWord = words[randomNum];
-  console.log(selectedWord);
+  return selectedWord;
 };
 
-selectWord();
+const selectedWord = selectWord();
+console.log(selectedWord);
+const request = `https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`
+
+fetch(request)
+.then((res) => {
+  console.log("resolved", res);
+  return res.json();
+})
+.then((data) => {
+  console.log("json done", data);
+})
+.catch((e) => {
+  console.log("error", e);
+})
+
+
+
+
