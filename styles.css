@@ -14,3 +14,8 @@ html {
 .nav-container {
   padding: 0;
 }
+
+#definition {
+  color: white;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}

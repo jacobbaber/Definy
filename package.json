@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "axios": "^0.27.2",
     "bootstrap": "^5.2.0-beta1",
-    "google-dictionary-api": "^1.0.8"
+    "google-dictionary-api": "^1.0.8",
+    "requirejs": "^2.3.6"
   }
 }
