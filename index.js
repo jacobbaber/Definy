@@ -18,11 +18,22 @@ function startGame() {
   const selectedWord = selectWord();
   console.log(selectedWord);
   getDefinition(selectedWord);
+  createLetterBoxes(selectedWord);
 }
 
 function showDefinition(definition) {
   const defh4 = document.querySelector("#definition");
   defh4.innerHTML = definition;
+}
+
+function createLetterBoxes(word) {
+  const wordRow = document.querySelector("#wordRow");
+  for (let letters of word) {
+    const letterDiv = document.createElement("div");
+    letterDiv.classList.add("letter-boxes");
+    letterDiv.innerHTML = "TEST";
+    wordRow.append(letterDiv);
+  }
 }
 
 startGame();

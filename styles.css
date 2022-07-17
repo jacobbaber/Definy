@@ -18,4 +18,30 @@ html {
 #definition {
   color: white;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.def-container {
+  height: 20vh;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.letter-boxes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-style: solid;
+  border-color: white;
+  width: 75px;
+  height: 75px;
+}
+
+#wordRow {
+  display: flex;
+  justify-content: center;
+  margin-right: 0;
 }
