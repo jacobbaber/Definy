@@ -19,6 +19,7 @@ function startGame() {
   console.log(selectedWord);
   getDefinition(selectedWord);
   createLetterBoxes(selectedWord);
+  letterBoxInputs();
 }
 
 function showDefinition(definition) {
@@ -31,9 +32,27 @@ function createLetterBoxes(word) {
   for (let letters of word) {
     const letterDiv = document.createElement("div");
     letterDiv.classList.add("letter-boxes");
-    letterDiv.innerHTML = "TEST";
     wordRow.append(letterDiv);
   }
+}
+
+function letterBoxInputs() {
+  const letterBoxes = document.querySelectorAll(".letter-boxes");
+  let place = 0;
+  document.addEventListener("keyup", (e) => {
+    console.log(e);
+    if (e.keyCode >= "65" && e.keyCode <= "90" && place != letterBoxes.length) {
+      letterBoxes[place].innerHTML = e.key.toUpperCase();
+      if (place < letterBoxes.length) {
+        ++place;
+      }
+    } else if (e.key === "Backspace") {
+      if (place > 0) {
+        --place;
+      }
+      letterBoxes[place].innerHTML = "";
+    }
+  });
 }
 
 startGame();

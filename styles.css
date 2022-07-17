@@ -38,10 +38,12 @@ html {
   border-color: white;
   width: 75px;
   height: 75px;
+  margin-left: 5px;
 }
 
 #wordRow {
   display: flex;
   justify-content: center;
   margin-right: 0;
+  padding-top: 4vh;
 }
