@@ -39,6 +39,8 @@ html {
   width: 75px;
   height: 75px;
   margin-left: 5px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 2em;
 }
 
 #wordRow {
@@ -46,4 +48,27 @@ html {
   justify-content: center;
   margin-right: 0;
   padding-top: 4vh;
+}
+
+.button-container {
+  padding-top: 5vh;
+}
+
+.hintedLetter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: cyan;
+  border-style: solid;
+  border-color: cyan;
+  width: 75px;
+  height: 75px;
+  margin-left: 5px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 2em;
+}
+
+.guessedCorrectly {
+  color: #00ff00;
+  border-color: #00ff00;
 }
