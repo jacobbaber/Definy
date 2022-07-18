@@ -23,7 +23,7 @@ html {
 }
 
 .def-container {
-  height: 20vh;
+  height: 25vh;
   display: flex;
   align-items: end;
   justify-content: center;
@@ -86,8 +86,10 @@ html {
 
 .reveal {
   margin-right: 2%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 .newGame {
   margin-left: 2%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }

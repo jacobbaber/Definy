@@ -169,7 +169,7 @@ function gameCompleted() {
           gameCompleted();
           console.log("You win!");
         } else {
-          incorrectGuess();
+          place = incorrectGuess();
           console.log("Wrong");
         }
       }
