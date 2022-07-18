@@ -83,3 +83,11 @@ html {
   color: red;
   border-color: red;
 }
+
+.reveal {
+  margin-right: 2%;
+}
+
+.newGame {
+  margin-left: 2%;
+}

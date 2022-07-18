@@ -177,4 +177,9 @@ function gameCompleted() {
   }
 }
 
+const newGameButton = document.querySelector("#new-game");
+newGameButton.addEventListener("click", () => {
+  location.reload();
+});
+
 startGame();
