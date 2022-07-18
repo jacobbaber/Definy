@@ -52,6 +52,8 @@ html {
 
 .button-container {
   padding-top: 5vh;
+  display: flex;
+  justify-content: center;
 }
 
 .hintedLetter {
@@ -68,7 +70,16 @@ html {
   font-size: 2em;
 }
 
+.animate__animated.animate__shakeX {
+  --animate-duration: 0.8s;
+}
+
 .guessedCorrectly {
   color: #00ff00;
   border-color: #00ff00;
+}
+
+.guessedIncorrectly {
+  color: red;
+  border-color: red;
 }

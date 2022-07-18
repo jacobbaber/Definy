@@ -17,9 +17,8 @@ function startGame() {
   const selectedWord = selectWord();
   getDefinition(selectedWord);
   createLetterBoxes(selectedWord);
-  letterBoxInputs();
+  letterBoxInputs(selectedWord);
   revealLetter(selectedWord);
-  enterGuess(selectedWord);
 }
 
 function showDefinition(definition) {
@@ -36,7 +35,7 @@ function createLetterBoxes(word) {
   }
 }
 
-function letterBoxInputs() {
+function letterBoxInputs(selectedWord) {
   const letterBoxes = document.querySelectorAll(".letter-boxes");
   let place = 0;
   document.addEventListener("keyup", (e) => {
@@ -66,6 +65,15 @@ function letterBoxInputs() {
     ) {
       --place;
       letterBoxes[place].innerHTML = "";
+    } else if (e.key === "Enter") {
+      const guess = getGuess();
+      if (selectedWord == guess) {
+        gameCompleted();
+        console.log("You win!");
+      } else {
+        place = incorrectGuess();
+        console.log("Wrong");
+      }
     }
   });
 }
@@ -83,19 +91,6 @@ function revealLetter(selectedWord) {
   });
 }
 
-function enterGuess(selectedWord) {
-  const enterGuessButton = document.querySelector(".enterGuess");
-  enterGuessButton.addEventListener("click", () => {
-    const guess = getGuess();
-    if (selectedWord == guess) {
-      gameCompleted();
-      console.log("You win!");
-    } else {
-      console.log("Wrong");
-    }
-  });
-}
-
 function getGuess() {
   const letterBoxes = document.querySelectorAll(".letter-boxes");
   let guess = "";
@@ -105,10 +100,80 @@ function getGuess() {
   return guess.toLowerCase();
 }
 
+function incorrectGuess() {
+  const letterBoxes = document.querySelectorAll(".letter-boxes");
+  let newPlace = 0;
+  for (let letter of letterBoxes) {
+    letter.classList.add(
+      "guessedIncorrectly",
+      "animate__animated",
+      "animate__shakeX"
+    );
+  }
+  setTimeout(() => {
+    for (let letter of letterBoxes) {
+      if (letter.classList.contains("hintedLetter")) {
+        ++newPlace;
+      } else {
+        letter.innerHTML = "";
+      }
+
+      letter.classList.remove(
+        "guessedIncorrectly",
+        "animate__animated",
+        "animate__shakeX"
+      );
+    }
+  }, 500);
+  return newPlace;
+}
+
 function gameCompleted() {
   const letterBoxes = document.querySelectorAll(".letter-boxes");
   for (let letter of letterBoxes) {
-    letter.classList.add("guessedCorrectly");
+    letter.classList.add(
+      "guessedCorrectly",
+      "animate__animated",
+      "animate__tada"
+    );
+    document.removeEventListener("keydown", (e) => {
+      if (place < letterBoxes.length) {
+        while (
+          letterBoxes[place].classList.contains("hintedLetter") &&
+          place < letterBoxes.length - 1
+        ) {
+          ++place;
+        }
+      }
+      if (
+        e.keyCode >= "65" &&
+        e.keyCode <= "90" &&
+        place < letterBoxes.length &&
+        !letterBoxes[place].classList.contains("hintedLetter")
+      ) {
+        letterBoxes[place].innerHTML = e.key.toUpperCase();
+        if (place < letterBoxes.length) {
+          ++place;
+        }
+      } else if (
+        e.key === "Backspace" &&
+        place > 0 &&
+        place <= letterBoxes.length &&
+        !letterBoxes[place - 1].classList.contains("hintedLetter")
+      ) {
+        --place;
+        letterBoxes[place].innerHTML = "";
+      } else if (e.key === "Enter") {
+        const guess = getGuess();
+        if (selectedWord == guess) {
+          gameCompleted();
+          console.log("You win!");
+        } else {
+          incorrectGuess();
+          console.log("Wrong");
+        }
+      }
+    });
   }
 }
 
