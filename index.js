@@ -10,6 +10,7 @@ function selectWord() {
 async function getDefinition(word) {
   const res = await axios.get(request + word);
   const definition = res.data[0]["meanings"][0]["definitions"][0]["definition"];
+  console.log(res);
   showDefinition(definition);
 }
 
