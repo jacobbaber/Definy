@@ -17,6 +17,7 @@ html {
 
 #definition {
   color: white;
+  font-size: 250%;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   display: flex;
   justify-content: center;
@@ -36,8 +37,8 @@ html {
   color: white;
   border-style: solid;
   border-color: white;
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   margin-left: 5px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 2em;
@@ -78,7 +79,6 @@ html {
   color: #00ff00;
   border-color: #00ff00;
 }
-
 .guessedIncorrectly {
   color: red;
   border-color: red;
