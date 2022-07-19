@@ -61,7 +61,8 @@ function letterBoxInputs(selectedWord) {
       e.key === "Backspace" &&
       place > 0 &&
       place <= letterBoxes.length &&
-      !letterBoxes[place - 1].classList.contains("hintedLetter")
+      !letterBoxes[place - 1].classList.contains("hintedLetter") &&
+      !letterBoxes[place - 1].classList.contains("guessedCorrectly")
     ) {
       --place;
       letterBoxes[place].innerHTML = "";
@@ -136,44 +137,7 @@ function gameCompleted() {
       "animate__animated",
       "animate__tada"
     );
-    document.removeEventListener("keydown", (e) => {
-      if (place < letterBoxes.length) {
-        while (
-          letterBoxes[place].classList.contains("hintedLetter") &&
-          place < letterBoxes.length - 1
-        ) {
-          ++place;
-        }
-      }
-      if (
-        e.keyCode >= "65" &&
-        e.keyCode <= "90" &&
-        place < letterBoxes.length &&
-        !letterBoxes[place].classList.contains("hintedLetter")
-      ) {
-        letterBoxes[place].innerHTML = e.key.toUpperCase();
-        if (place < letterBoxes.length) {
-          ++place;
-        }
-      } else if (
-        e.key === "Backspace" &&
-        place > 0 &&
-        place <= letterBoxes.length &&
-        !letterBoxes[place - 1].classList.contains("hintedLetter")
-      ) {
-        --place;
-        letterBoxes[place].innerHTML = "";
-      } else if (e.key === "Enter") {
-        const guess = getGuess();
-        if (selectedWord == guess) {
-          gameCompleted();
-          console.log("You win!");
-        } else {
-          place = incorrectGuess();
-          console.log("Wrong");
-        }
-      }
-    });
+    
   }
 }
 

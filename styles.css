@@ -7,7 +7,7 @@ html {
 .definy-logo {
   color: white;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: xx-large;
+  font-size: 250%;
   letter-spacing: 1px;
 }
 
@@ -64,8 +64,6 @@ html {
   color: cyan;
   border-style: solid;
   border-color: cyan;
-  width: 75px;
-  height: 75px;
   margin-left: 5px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 2em;
@@ -92,4 +90,9 @@ html {
 .newGame {
   margin-left: 2%;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+
+#line {
+  border-top: 1px solid red;
 }
