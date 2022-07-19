@@ -41,7 +41,7 @@ html {
   height: 100px;
   margin-left: 5px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 2em;
+  font-size: 3em;
 }
 
 #wordRow {
@@ -66,11 +66,15 @@ html {
   border-color: cyan;
   margin-left: 5px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 2em;
+  font-size: 3em;
 }
 
 .animate__animated.animate__shakeX {
   --animate-duration: 0.8s;
+}
+
+.animate__pulse {
+  --animate-duration: 0.2s;
 }
 
 .guessedCorrectly {
@@ -92,7 +96,3 @@ html {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
-
-#line {
-  border-top: 1px solid red;
-}
