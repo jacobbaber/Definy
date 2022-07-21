@@ -24,6 +24,7 @@ html {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .def-container {
@@ -40,8 +41,8 @@ html {
   color: white;
   border-style: solid;
   border-color: white;
-  width: 100px;
-  height: 100px;
+  width: 8vh;
+  height: 8vh;
   margin-left: 5px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 3em;

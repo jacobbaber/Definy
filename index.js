@@ -143,6 +143,11 @@ function gameCompleted() {
       "animate__animated",
       "animate__tada"
     );
+    document.addEventListener("keyup", (e)=>{
+      if (e.key === 'Enter'){
+        location.reload();
+      }
+    })
     
   }
 }
