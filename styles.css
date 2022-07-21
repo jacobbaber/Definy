@@ -2,6 +2,9 @@ body,
 html {
   background-color: #151515;
   height: 100%;
+  caret-color: transparent;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+
 }
 
 .definy-logo {
@@ -17,14 +20,14 @@ html {
 
 #definition {
   color: white;
-  font-size: 250%;
+  font-size: 4vh;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   display: flex;
   justify-content: center;
 }
 
 .def-container {
-  height: 25vh;
+  height: 30%;
   display: flex;
   align-items: end;
   justify-content: center;
@@ -94,5 +97,44 @@ html {
 .newGame {
   margin-left: 2%;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+
+
+.key {
+  background-color: white;
+  margin-left: 1px;
+  margin-RIGHT: 1px;
+  margin-bottom: 3px;
+  height: 80px;
+  width: 50px;
+  border-radius: 10%;
+  align-items: center; 
+  justify-content: center;
+  font-size: 25px;
+}
+
+.back {
+  width: 100px;
+}
+
+.enter {
+  width: 100px;
+}
+
+.keyboard-1 {
+  display: flex;
+  margin-top: 200px;
+  justify-content: center;
+}
+
+.keyboard-2 {
+  display: flex;
+  justify-content: center;
+}
+
+.keyboard-3 {
+  display: flex;
+  justify-content: center;
 }
 
