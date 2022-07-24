@@ -118,10 +118,30 @@ html {
 }
 
 .back {
+  display: flex;
+  background-color: white;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-bottom: 3px;
+  height: 60px;
+  border-radius: 10%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
   width: 70px;
 }
 
 .enter {
+  display: flex;
+  background-color: white;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-bottom: 3px;
+  height: 60px;
+  border-radius: 10%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
   width: 70px;
 }
 
@@ -160,10 +180,24 @@ html {
   }
 
   .back {
-    width: 14vw;
+    margin-right: 0.1vw;
+    margin-bottom: 0.3vw;
+    height: 14vw;
+    width: 12vw;
+    border-radius: 10%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
   }
 
   .enter {
-    width: 14vw;
+    margin-right: 0.1vw;
+    margin-bottom: 0.3vw;
+    height: 14vw;
+    width: 12vw;
+    border-radius: 10%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
   }
 }
