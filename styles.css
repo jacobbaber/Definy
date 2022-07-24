@@ -9,7 +9,7 @@ html {
 .definy-logo {
   color: white;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 250%;
+  font-size: 200%;
   letter-spacing: 1px;
 }
 
@@ -19,11 +19,15 @@ html {
 
 #definition {
   color: white;
-  font-size: 4vh;
+  max-height: 167px;
+  font-size: 200%;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   display: flex;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 }
 
 .def-container {
@@ -110,7 +114,7 @@ html {
   border-radius: 10%;
   align-items: center;
   justify-content: center;
-  font-size: em;
+  font-size: 1.2em;
 }
 
 .back {
@@ -141,4 +145,25 @@ html {
 .keyboard-3 {
   display: flex;
   justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .key {
+    margin-right: 0.1vw;
+    margin-bottom: 0.3vw;
+    height: 14vw;
+    width: 9vw;
+    border-radius: 10%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+  }
+
+  .back {
+    width: 14vw;
+  }
+
+  .enter {
+    width: 14vw;
+  }
 }

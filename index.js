@@ -39,6 +39,7 @@ function createLetterBoxes(word) {
 function letterBoxInputs(selectedWord) {
   const letterBoxes = document.querySelectorAll(".letter-boxes");
   let place = 0;
+  const keys = document.querySelectorAll(".key");
   document.addEventListener("keyup", (e) => {
     if (place < letterBoxes.length) {
       while (
@@ -54,7 +55,7 @@ function letterBoxInputs(selectedWord) {
       place < letterBoxes.length &&
       !letterBoxes[place].classList.contains("hintedLetter")
     ) {
-      letterBoxes[place].classList.add('animate__animated', 'animate__pulse');
+      letterBoxes[place].classList.add("animate__animated", "animate__pulse");
       letterBoxes[place].innerHTML = e.key.toUpperCase();
       if (place < letterBoxes.length) {
         ++place;
@@ -67,7 +68,7 @@ function letterBoxInputs(selectedWord) {
       !letterBoxes[place - 1].classList.contains("guessedCorrectly")
     ) {
       --place;
-      letterBoxes[place].classList.remove('animate__pulse');
+      letterBoxes[place].classList.remove("animate__pulse");
       letterBoxes[place].innerHTML = "";
     } else if (e.key === "Enter") {
       const guess = getGuess();
@@ -89,6 +90,7 @@ function revealLetter(selectedWord) {
   revealButton.addEventListener("click", () => {
     if (place < selectedWord.length) {
       letterBoxes[place].innerHTML = selectedWord[place].toUpperCase();
+      letterBoxes[place].classList.add("animate__animated", "animate__flipInX");
       letterBoxes[place].classList.toggle("hintedLetter");
       ++place;
     }
@@ -135,20 +137,17 @@ function incorrectGuess() {
 function gameCompleted() {
   const letterBoxes = document.querySelectorAll(".letter-boxes");
   for (let letter of letterBoxes) {
-    letter.classList.remove(
-      'animate__animated', 'animate__pulse'
-    )
+    letter.classList.remove("animate__animated", "animate__pulse");
     letter.classList.add(
       "guessedCorrectly",
       "animate__animated",
       "animate__tada"
     );
-    document.addEventListener("keyup", (e)=>{
-      if (e.key === 'Enter'){
+    document.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
         location.reload();
       }
-    })
-    
+    });
   }
 }
 
