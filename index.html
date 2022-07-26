@@ -48,7 +48,7 @@
         class="btn btn-lg btn-light newGame"
         id="new-game"
       >
-        New Game
+        Next Word
       </button>
     </div>
     <div class="entire-keyboard">
@@ -89,7 +89,9 @@
           <button onclick="this.blur()" class="col key">B</button>
           <button onclick="this.blur()" class="col key">N</button>
           <button onclick="this.blur()" class="col key">M</button>
-          <button onclick="this.blur()" class="col back">Back</button>
+          <button onclick="this.blur()" class="col back">
+            <i class="fa-solid fa-delete-left"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -122,6 +124,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <script
+      src="https://kit.fontawesome.com/6bcecb13a4.js"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="index.js"></script>
   </body>
 </html>
