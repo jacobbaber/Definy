@@ -1,5 +1,5 @@
 import words from "./words.json" assert { type: "json" };
-const request = `https://api.dictionaryapi.dev/api/v2/entries/en/`;
+var request = `https://api.dictionaryapi.dev/api/v2/entries/en/`;
 
 function selectWord() {
   let randomNum = Math.floor(Math.random() * 3000);
@@ -8,14 +8,14 @@ function selectWord() {
 }
 
 async function getDefinition(word) {
-  const res = await axios.get(request + word);
-  const definition = res.data[0]["meanings"][0]["definitions"][0]["definition"];
+  var res = await axios.get(request + word);
+  var definition = res.data[0]["meanings"][0]["definitions"][0]["definition"];
   console.log(res);
   showDefinition(definition);
 }
 
 function startGame() {
-  const selectedWord = selectWord();
+  var selectedWord = selectWord();
   getDefinition(selectedWord);
   createLetterBoxes(selectedWord);
   letterBoxInputs(selectedWord);
@@ -23,14 +23,14 @@ function startGame() {
 }
 
 function showDefinition(definition) {
-  const defh4 = document.querySelector("#definition");
+  var defh4 = document.querySelector("#definition");
   defh4.innerHTML = definition;
 }
 
 function createLetterBoxes(word) {
-  const wordRow = document.querySelector("#wordRow");
+  var wordRow = document.querySelector("#wordRow");
   for (let letters of word) {
-    const letterDiv = document.createElement("div");
+    var letterDiv = document.createElement("div");
     letterDiv.classList.add("letter-boxes");
     letterDiv.classList.add("animate__animated");
     wordRow.append(letterDiv);
@@ -38,14 +38,14 @@ function createLetterBoxes(word) {
 }
 
 function letterBoxInputs(selectedWord) {
-  const letterBoxes = document.querySelectorAll(".letter-boxes");
+  var letterBoxes = document.querySelectorAll(".letter-boxes");
   let place = 0;
-  const keys = document.querySelectorAll(".key");
-  const enter = document.querySelector(".enter");
-  const back = document.querySelector(".back");
+  var keys = document.querySelectorAll(".key");
+  var enter = document.querySelector(".enter");
+  var back = document.querySelector(".back");
 
   enter.addEventListener("click", () => {
-    const guess = getGuess();
+    var guess = getGuess();
     if (selectedWord == guess) {
       gameCompleted();
       console.log("You win!");
@@ -137,8 +137,8 @@ function letterBoxInputs(selectedWord) {
 
 function revealLetter(selectedWord) {
   let place = 0;
-  const letterBoxes = document.querySelectorAll(".letter-boxes");
-  const revealButton = document.querySelector(".reveal");
+  var letterBoxes = document.querySelectorAll(".letter-boxes");
+  var revealButton = document.querySelector(".reveal");
   revealButton.addEventListener("click", () => {
     if (
       place < selectedWord.length &&
@@ -153,7 +153,7 @@ function revealLetter(selectedWord) {
 }
 
 function getGuess() {
-  const letterBoxes = document.querySelectorAll(".letter-boxes");
+  var letterBoxes = document.querySelectorAll(".letter-boxes");
   let guess = "";
   for (let letter of letterBoxes) {
     guess = guess + letter.innerHTML;
@@ -162,7 +162,7 @@ function getGuess() {
 }
 
 function incorrectGuess() {
-  const letterBoxes = document.querySelectorAll(".letter-boxes");
+  var letterBoxes = document.querySelectorAll(".letter-boxes");
   let newPlace = 0;
   for (let letter of letterBoxes) {
     letter.classList.remove(
@@ -193,7 +193,7 @@ function incorrectGuess() {
 }
 
 function gameCompleted() {
-  const letterBoxes = document.querySelectorAll(".letter-boxes");
+  var letterBoxes = document.querySelectorAll(".letter-boxes");
   for (let letter of letterBoxes) {
     letter.classList.remove(
       "guessedIncorrectly",
@@ -202,7 +202,7 @@ function gameCompleted() {
       "animate__pulse"
     );
     letter.classList.add("guessedCorrectly", "animate__tada");
-    const revealButton = document.querySelector(".reveal");
+    var revealButton = document.querySelector(".reveal");
     document.addEventListener("keyup", (e) => {
       if (e.key === "Enter") {
         location.reload();
@@ -211,7 +211,7 @@ function gameCompleted() {
   }
 }
 
-const newGameButton = document.querySelector("#new-game");
+var newGameButton = document.querySelector("#new-game");
 newGameButton.addEventListener("click", () => {
   location.reload();
 });
