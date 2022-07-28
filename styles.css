@@ -7,8 +7,8 @@ html {
 }
 .definy-logo {
   color: white;
-  font-size: 250%;
-  letter-spacing: 1px;
+  font-size: 2em;
+  letter-spacing: .03em;
 }
 
 .nav-container {
@@ -17,7 +17,6 @@ html {
 
 #definition {
   color: white;
-  max-height: 167px;
   font-size: 4vh;
   display: flex;
   justify-content: center;
