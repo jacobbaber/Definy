@@ -101,6 +101,7 @@ html {
 }
 
 .key {
+  color: black;
   display: flex;
   background-color: white;
   margin-left: 1px;
@@ -115,6 +116,7 @@ html {
 }
 
 .back {
+  color: black;
   display: flex;
   background-color: white;
   margin-left: 1px;
@@ -129,6 +131,7 @@ html {
 }
 
 .enter {
+  color: black;
   display: flex;
   background-color: white;
   margin-left: 1px;
