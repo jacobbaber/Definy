@@ -1,8 +1,8 @@
-import words from "./words.json" assert { type: "json" };
+let words = ["test", "test", "test", "test"];
 const request = `https://api.dictionaryapi.dev/api/v2/entries/en/`;
 
 function selectWord() {
-  let randomNum = Math.floor(Math.random() * 3000);
+  let randomNum = Math.floor(Math.random() * 4);
   let selectedWord = words[randomNum];
   return selectedWord;
 }
