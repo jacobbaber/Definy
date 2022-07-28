@@ -1,4 +1,4 @@
-let words = ["test", "test", "test", "test"];
+let words = ["more", "more", "more", "more"];
 const request = `https://api.dictionaryapi.dev/api/v2/entries/en/`;
 
 function selectWord() {
