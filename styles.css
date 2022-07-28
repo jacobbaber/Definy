@@ -177,6 +177,10 @@ body {
 
 @media only screen and (max-width: 600px) {
 
+  .def-container {
+    height: 50%;
+  }
+
 
   .key {
     margin-right: 0.1vw;
