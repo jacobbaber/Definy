@@ -1,3 +1,6 @@
+* {
+  touch-action: manipulation;
+}
 
 html {
   height: -webkit-fill-available;
