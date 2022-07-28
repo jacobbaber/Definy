@@ -1,8 +1,8 @@
-let words = ["more", "more", "more", "more"];
+let words = ["again"];
 const request = `https://api.dictionaryapi.dev/api/v2/entries/en/`;
 
 function selectWord() {
-  let randomNum = Math.floor(Math.random() * 4);
+  let randomNum = Math.floor(Math.random() * 1);
   let selectedWord = words[randomNum];
   return selectedWord;
 }
