@@ -611,7 +611,8 @@ function gameCompleted() {
       "animate__pulse"
     );
     letter.classList.add("guessedCorrectly", "animate__tada");
-    const revealButton = document.querySelector(".reveal");
+    const nextWord = document.querySelector(".nextWord");
+    nextWord.removeAttribute("disabled");
     document.addEventListener("keyup", (e) => {
       if (e.key === "Enter") {
         location.reload();
