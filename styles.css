@@ -13,6 +13,39 @@ body {
   font-family: "Bebas Neue", cursive;
   height: -webkit-fill-available;
 }
+
+.howToPlayContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5%;
+}
+.howToPlay {
+  font-size: 2em;
+  color: white;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5em;
+}
+
+.logo-container {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding-top: 0.5em;
+}
+
+.navbar {
+  justify-content: center;
+}
+
 .definy-logo {
   color: white;
   font-size: 2em;
@@ -21,6 +54,7 @@ body {
 
 .nav-container {
   padding: 0;
+  display: inline;
 }
 
 #definition {
