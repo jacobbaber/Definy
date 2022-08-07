@@ -41,10 +41,60 @@
     <!-- As a heading -->
     <div class="header border-bottom border-white">
       <div class="howToPlayContainer">
-        <div><i class="fa-solid fa-circle-question howToPlay"></i></div>
+        <button
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
+          onclick="this.blur()"
+          class="howToPlayButton"
+        >
+          <i class="fa-solid fa-circle-question howToPlay"></i>
+        </button>
       </div>
       <div class="logo-container">
         <h1>Definy</h1>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">How To Play</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Guess the word based on the definition and the number of letters.
+            <br />
+            <br />
+            There will be three available words to guess per day.
+            <br />
+            <br />
+            After guessing all three words, you will be given a score based on:
+            number of revealed letters and the number of incorrect guesses.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="container def-container">
@@ -102,7 +152,7 @@
       </div>
       <div class="keyboard-3">
         <div class="row align-items-center flex-nowrap">
-          <button onclick="this.blur()" class="col enter">Submit</button>
+          <button onclick="this.blur()" class="col enter">Enter</button>
           <button onclick="this.blur()" class="col key">Z</button>
           <button onclick="this.blur()" class="col key">X</button>
           <button onclick="this.blur()" class="col key">C</button>
