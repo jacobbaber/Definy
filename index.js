@@ -411,7 +411,7 @@ let words3 = [
 const request = `https://api.dictionaryapi.dev/api/v2/entries/en/`;
 
 const days = () => {
-  let date_1 = new Date("8/7/2022");
+  let date_1 = new Date("8/9/2022");
   let date_2 = new Date();
   let difference = date_2.getTime() - date_1.getTime();
   let TotalDays = Math.ceil(difference / (1000 * 3600 * 24)) - 1;
@@ -667,7 +667,10 @@ newGameButton.addEventListener("click", () => {
 });
 
 if (localStorage.getItem("completedDay") != new Date().toDateString()) {
+  console.log(localStorage.getItem("completedDay"));
+  console.log(new Date().toDateString());
   startGame();
 }
 
 console.log(localStorage.getItem("completedDay"));
+console.log(new Date().toDateString());
