@@ -422,10 +422,11 @@ if (localStorage.getItem("wordNum") === null) {
   localStorage.setItem("wordNum", 0);
 }
 
+localStorage.setItem("currentDate", new Date().toDateString());
+
 function selectWord() {
   let dateSeed = days();
   let wordNum = localStorage.getItem("wordNum");
-  console.log(wordNum);
   let selectedWord = words[days()][wordNum];
   return selectedWord;
 }
@@ -482,10 +483,8 @@ function letterBoxInputs(selectedWord) {
       !letterBoxes[0].classList.contains("guessedCorrectly")
     ) {
       wordCompleted();
-      console.log("You win!");
     } else if (!letterBoxes[0].classList.contains("guessedCorrectly")) {
       place = incorrectGuess();
-      console.log("Wrong");
     }
   });
 
@@ -563,10 +562,8 @@ function letterBoxInputs(selectedWord) {
       const guess = getGuess();
       if (selectedWord == guess) {
         wordCompleted();
-        console.log("You win!");
       } else {
         place = incorrectGuess();
-        console.log("Wrong");
       }
     }
   });
@@ -632,7 +629,6 @@ function incorrectGuess() {
 function wordCompleted() {
   const letterBoxes = document.querySelectorAll(".letter-boxes");
   let wordNum = parseInt(localStorage.getItem("wordNum"));
-  console.log(wordNum);
   for (let letter of letterBoxes) {
     letter.classList.remove(
       "guessedIncorrectly",
@@ -646,12 +642,10 @@ function wordCompleted() {
     let completedDate = new Date().toDateString();
     localStorage.setItem("completedDay", completedDate);
     localStorage.setItem("wordNum", 0);
-    console.log(completedDate);
   } else {
     const nextWord = document.querySelector(".nextWord");
     nextWord.removeAttribute("disabled");
     wordNum++;
-    console.log(wordNum);
     localStorage.setItem("wordNum", wordNum);
     document.addEventListener("keyup", (e) => {
       if (e.key === "Enter") {
@@ -666,11 +660,8 @@ newGameButton.addEventListener("click", () => {
   location.reload();
 });
 
-if (localStorage.getItem("completedDay") != new Date().toDateString()) {
-  console.log(localStorage.getItem("completedDay"));
-  console.log(new Date().toDateString());
+if (
+  localStorage.getItem("completedDay") != localStorage.getItem("currentDate")
+) {
   startGame();
 }
-
-console.log(localStorage.getItem("completedDay"));
-console.log(new Date().toDateString());
