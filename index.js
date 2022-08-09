@@ -1,10 +1,10 @@
 let words = [
-  "transform",
-  "athlete",
-  "sin",
-  "tank",
-  "nothing",
-  "ease",
+  ["transform", "athlete", "sin"],
+  ["tank", "nothing", "ease"],
+  ["science", "pan", "extent"],
+];
+
+let words3 = [
   "science",
   "pan",
   "extent",
@@ -410,25 +410,47 @@ let words = [
 ];
 const request = `https://api.dictionaryapi.dev/api/v2/entries/en/`;
 
+const days = () => {
+  let date_1 = new Date("8/7/2022");
+  let date_2 = new Date();
+  let difference = date_2.getTime() - date_1.getTime();
+  let TotalDays = Math.ceil(difference / (1000 * 3600 * 24)) - 1;
+  return TotalDays;
+};
+
+if (localStorage.getItem("wordNum") === null) {
+  localStorage.setItem("wordNum", 0);
+}
+
 function selectWord() {
-  let randomNum = Math.floor(Math.random() * 408);
-  let selectedWord = words[randomNum];
+  let dateSeed = days();
+  let wordNum = localStorage.getItem("wordNum");
+  console.log(wordNum);
+  let selectedWord = words[days()][wordNum];
   return selectedWord;
 }
 
 async function getDefinition(word) {
   const res = await axios.get(request + word);
   const definition = res.data[0]["meanings"][0]["definitions"][0]["definition"];
-  console.log(res);
   showDefinition(definition);
 }
 
 function startGame() {
-  const selectedWord = selectWord();
-  getDefinition(selectedWord);
-  createLetterBoxes(selectedWord);
-  letterBoxInputs(selectedWord);
-  revealLetter(selectedWord);
+  if (checkIfCompleted()) {
+    const selectedWord = selectWord();
+    getDefinition(selectedWord);
+    createLetterBoxes(selectedWord);
+    letterBoxInputs(selectedWord);
+    revealLetter(selectedWord);
+  }
+}
+
+function checkIfCompleted() {
+  if (localStorage.getItem("dayCompleted") != new Date().getDay()) {
+    return true;
+  }
+  return false;
 }
 
 function showDefinition(definition) {
@@ -455,10 +477,13 @@ function letterBoxInputs(selectedWord) {
 
   enter.addEventListener("click", () => {
     const guess = getGuess();
-    if (selectedWord == guess) {
-      gameCompleted();
+    if (
+      selectedWord == guess &&
+      !letterBoxes[0].classList.contains("guessedCorrectly")
+    ) {
+      wordCompleted();
       console.log("You win!");
-    } else {
+    } else if (!letterBoxes[0].classList.contains("guessedCorrectly")) {
       place = incorrectGuess();
       console.log("Wrong");
     }
@@ -531,10 +556,13 @@ function letterBoxInputs(selectedWord) {
       --place;
       letterBoxes[place].classList.remove("animate__pulse");
       letterBoxes[place].innerHTML = "";
-    } else if (e.key === "Enter") {
+    } else if (
+      e.key === "Enter" &&
+      !letterBoxes[place - 1].classList.contains("guessedCorrectly")
+    ) {
       const guess = getGuess();
       if (selectedWord == guess) {
-        gameCompleted();
+        wordCompleted();
         console.log("You win!");
       } else {
         place = incorrectGuess();
@@ -601,8 +629,10 @@ function incorrectGuess() {
   return newPlace;
 }
 
-function gameCompleted() {
+function wordCompleted() {
   const letterBoxes = document.querySelectorAll(".letter-boxes");
+  let wordNum = parseInt(localStorage.getItem("wordNum"));
+  console.log(wordNum);
   for (let letter of letterBoxes) {
     letter.classList.remove(
       "guessedIncorrectly",
@@ -611,8 +641,18 @@ function gameCompleted() {
       "animate__pulse"
     );
     letter.classList.add("guessedCorrectly", "animate__tada");
+  }
+  if (wordNum === 2) {
+    let completedDate = new Date().toDateString();
+    localStorage.setItem("completedDay", completedDate);
+    localStorage.setItem("wordNum", 0);
+    console.log(completedDate);
+  } else {
     const nextWord = document.querySelector(".nextWord");
     nextWord.removeAttribute("disabled");
+    wordNum++;
+    console.log(wordNum);
+    localStorage.setItem("wordNum", wordNum);
     document.addEventListener("keyup", (e) => {
       if (e.key === "Enter") {
         location.reload();
@@ -626,4 +666,8 @@ newGameButton.addEventListener("click", () => {
   location.reload();
 });
 
-startGame();
+if (localStorage.getItem("completedDay") != new Date().toDateString()) {
+  startGame();
+}
+
+console.log(localStorage.getItem("completedDay"));
