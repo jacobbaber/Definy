@@ -584,6 +584,7 @@ function revealLetter(selectedWord) {
       ++place;
     }
   });
+  revealedScoreIncrement();
 }
 
 function getGuess() {
@@ -623,6 +624,7 @@ function incorrectGuess() {
       );
     }
   }, 500);
+  incorrectScoreIncrement();
   return newPlace;
 }
 
@@ -642,6 +644,9 @@ function wordCompleted() {
     let completedDate = new Date().toDateString();
     localStorage.setItem("completedDay", completedDate);
     localStorage.setItem("wordNum", 0);
+    setTimeout(() => {
+      showResults();
+    }, 1000);
   } else {
     const nextWord = document.querySelector(".nextWord");
     nextWord.removeAttribute("disabled");
@@ -655,6 +660,53 @@ function wordCompleted() {
   }
 }
 
+function showResults() {
+  updateStatsModal();
+  $("#testModal").modal("show");
+}
+
+function incorrectScoreIncrement() {
+  if (localStorage.getItem(`incorScore${new Date().toDateString()}`) === null) {
+    localStorage.setItem(`incorScore${new Date().toDateString()}`, 1);
+  } else {
+    let incorScore = parseInt(
+      localStorage.getItem(`incorScore${new Date().toDateString()}`)
+    );
+    ++incorScore;
+    localStorage.setItem(`incorScore${new Date().toDateString()}`, incorScore);
+  }
+}
+
+function revealedScoreIncrement() {
+  let revScore = parseInt(
+    localStorage.getItem(`revScore${new Date().toDateString()}`)
+  );
+  ++incorScore;
+  localStorage.setItem(`revScore${new Date().toDateString()}`, revScore);
+}
+
+function getRevealedScore() {
+  return localStorage.getItem(`revScore${new Date().toDateString()}`);
+}
+
+function getIncorrectScore() {
+  return localStorage.getItem(`incorScore${new Date().toDateString()}`);
+}
+
+function updateStatsModal() {
+  let stats = document.querySelector(".stats");
+  stats.innerHTML = `You had <span style='color: red'><b>${getIncorrectScore()}</b></span> incorrect guesses and <span style='color: cyan;'><b>${getRevealedScore()}</b></span> revealed letters for a total score of: <span style='color: green'>${
+    parseInt(getIncorrectScore()) + parseInt(getRevealedScore())
+  } </span><br><br><br> There will be three new words tomorrow :)`;
+}
+
+if (localStorage.getItem(`revScore${new Date().toDateString()}`) === null) {
+  localStorage.setItem(`revScore${new Date().toDateString()}`, 0);
+}
+if (localStorage.getItem(`incorScore${new Date().toDateString()}`) === null) {
+  localStorage.setItem(`incorScore${new Date().toDateString()}`, 0);
+}
+
 const newGameButton = document.querySelector("#new-game");
 newGameButton.addEventListener("click", () => {
   location.reload();
@@ -664,4 +716,6 @@ if (
   localStorage.getItem("completedDay") != localStorage.getItem("currentDate")
 ) {
   startGame();
+} else {
+  showResults();
 }
