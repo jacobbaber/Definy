@@ -584,7 +584,6 @@ function revealLetter(selectedWord) {
       ++place;
     }
   });
-  revealedScoreIncrement();
 }
 
 function getGuess() {
@@ -639,6 +638,9 @@ function wordCompleted() {
       "animate__pulse"
     );
     letter.classList.add("guessedCorrectly", "animate__tada");
+    if (letter.classList.contains("hintedLetter")) {
+      revealedScoreIncrement();
+    }
   }
   if (wordNum === 2) {
     let completedDate = new Date().toDateString();
@@ -666,22 +668,18 @@ function showResults() {
 }
 
 function incorrectScoreIncrement() {
-  if (localStorage.getItem(`incorScore${new Date().toDateString()}`) === null) {
-    localStorage.setItem(`incorScore${new Date().toDateString()}`, 1);
-  } else {
-    let incorScore = parseInt(
-      localStorage.getItem(`incorScore${new Date().toDateString()}`)
-    );
-    ++incorScore;
-    localStorage.setItem(`incorScore${new Date().toDateString()}`, incorScore);
-  }
+  let incorScore = parseInt(
+    localStorage.getItem(`incorScore${new Date().toDateString()}`)
+  );
+  ++incorScore;
+  localStorage.setItem(`incorScore${new Date().toDateString()}`, incorScore);
 }
 
 function revealedScoreIncrement() {
   let revScore = parseInt(
     localStorage.getItem(`revScore${new Date().toDateString()}`)
   );
-  ++incorScore;
+  ++revScore;
   localStorage.setItem(`revScore${new Date().toDateString()}`, revScore);
 }
 
