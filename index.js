@@ -357,6 +357,14 @@ function incorrectGuess() {
   return newPlace;
 }
 
+const share = document.querySelector(".share");
+share.addEventListener("click", () => {
+  navigator.share({
+    title: `I scored a ${getTotalScore()} in today's Definy`,
+    url: "https://jacobbaber.github.io/Definy/",
+  });
+});
+
 function wordCompleted() {
   const letterBoxes = document.querySelectorAll(".letter-boxes");
   let wordNum = parseInt(localStorage.getItem("wordNum"));
@@ -421,11 +429,13 @@ function getIncorrectScore() {
   return localStorage.getItem(`incorScore${new Date().toDateString()}`);
 }
 
+const getTotalScore = () => {
+  return parseInt(getIncorrectScore()) + parseInt(getRevealedScore());
+};
+
 function updateStatsModal() {
   let stats = document.querySelector(".stats");
-  stats.innerHTML = `You had <span style='color: red'><b>${getIncorrectScore()}</b></span> incorrect guesses and <span style='color: cyan;'><b>${getRevealedScore()}</b></span> revealed letters for a total score of: <span style='color: green'>${
-    parseInt(getIncorrectScore()) + parseInt(getRevealedScore())
-  } </span><br><br><br> There will be three new words tomorrow :)`;
+  stats.innerHTML = `You had <span style='color: red'><b>${getIncorrectScore()}</b></span> incorrect guesses and <span style='color: cyan;'><b>${getRevealedScore()}</b></span> revealed letters for a total score of: <span style='color: green'>${getTotalScore()} </span><br><br><br> There will be three new words tomorrow :)`;
 }
 
 if (localStorage.getItem(`revScore${new Date().toDateString()}`) === null) {
