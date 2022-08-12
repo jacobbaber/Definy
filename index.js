@@ -360,7 +360,7 @@ function incorrectGuess() {
 const share = document.querySelector(".share");
 share.addEventListener("click", () => {
   navigator.share({
-    title: `I scored a ${getTotalScore()} in today's Definy`,
+    text: `I scored a ${getTotalScore()} in today's Definy`,
     url: "https://jacobbaber.github.io/Definy/",
   });
 });
