@@ -2,7 +2,7 @@ let words = [
   ["transform", "athlete", "sin"],
   ["tank", "nothing", "ease"],
   ["science", "pan", "extent"],
-  ["cycle", "pan", "extent"],
+  ["cycle", "solar", "fart"],
   ["portion", "lesson", "sheet"],
   ["throat", "senior", "course"],
   ["more", "guarantee", "funeral"],
