@@ -157,8 +157,6 @@ function selectWord() {
   let dateSeed = days();
   let wordNum = localStorage.getItem("wordNum");
   let selectedWord = words[days()][wordNum];
-  const debug = document.querySelector(".debugger");
-  debug.innerHTML = localStorage.getItem("wordNum");
   return selectedWord;
 }
 
