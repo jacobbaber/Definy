@@ -244,6 +244,7 @@ function letterBoxInputs(selectedWord) {
       if (
         place < letterBoxes.length &&
         !letterBoxes[place].classList.contains("hintedLetter")
+        && readyForInput
       ) {
         letterBoxes[place].classList.add("animate__pulse");
         letterBoxes[place].innerHTML = e.target.innerHTML;
