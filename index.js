@@ -137,7 +137,6 @@ let words = [
   ["share", "porch", "give"],
 ];
 
-let words3 = [];
 const request = `https://api.dictionaryapi.dev/api/v2/entries/en/`;
 
 const days = () => {
@@ -154,9 +153,7 @@ function selectWord() {
   if (localStorage.getItem("wordNum") === null) {
     localStorage.setItem("wordNum", 0);
   }
-  let dateSeed = days();
-  let wordNum = localStorage.getItem("wordNum");
-  let selectedWord = words[days()][wordNum];
+  let selectedWord = words[days()][parseInt(localStorage.getItem("wordNum"))];
   return selectedWord;
 }
 
