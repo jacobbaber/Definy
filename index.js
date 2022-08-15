@@ -138,6 +138,7 @@ let words = [
 ];
 
 const request = `https://api.dictionaryapi.dev/api/v2/entries/en/`;
+let readyForInput = true;
 
 const days = () => {
   let date_1 = new Date("8/9/2022");
@@ -206,7 +207,8 @@ function letterBoxInputs(selectedWord) {
     const guess = getGuess();
     if (
       selectedWord == guess &&
-      !letterBoxes[0].classList.contains("guessedCorrectly")
+      !letterBoxes[0].classList.contains("guessedCorrectly") &&
+      readyForInput
     ) {
       wordCompleted();
     } else if (!letterBoxes[0].classList.contains("guessedCorrectly")) {
@@ -220,6 +222,7 @@ function letterBoxInputs(selectedWord) {
       place <= letterBoxes.length &&
       !letterBoxes[place - 1].classList.contains("hintedLetter") &&
       !letterBoxes[place - 1].classList.contains("guessedCorrectly")
+      && readyForInput
     ) {
       --place;
       letterBoxes[place].classList.remove("animate__pulse");
@@ -265,6 +268,7 @@ function letterBoxInputs(selectedWord) {
       e.keyCode <= "90" &&
       place < letterBoxes.length &&
       !letterBoxes[place].classList.contains("hintedLetter")
+      && readyForInput
     ) {
       letterBoxes[place].classList.add("animate__pulse");
       letterBoxes[place].innerHTML = e.key.toUpperCase();
@@ -277,6 +281,7 @@ function letterBoxInputs(selectedWord) {
       place <= letterBoxes.length &&
       !letterBoxes[place - 1].classList.contains("hintedLetter") &&
       !letterBoxes[place - 1].classList.contains("guessedCorrectly")
+      && readyForInput
     ) {
       --place;
       letterBoxes[place].classList.remove("animate__pulse");
@@ -289,7 +294,7 @@ function letterBoxInputs(selectedWord) {
       if (selectedWord == guess) {
         wordCompleted();
       } else {
-        place = incorrectGuess();
+        place = incorrectGuess()
       }
     }
   });
@@ -322,6 +327,7 @@ function getGuess() {
 }
 
 function incorrectGuess() {
+  readyForInput = false;
   const letterBoxes = document.querySelectorAll(".letter-boxes");
   let newPlace = 0;
   for (let letter of letterBoxes) {
@@ -348,6 +354,7 @@ function incorrectGuess() {
         "animate__pulse"
       );
     }
+    readyForInput = true;
   }, 500);
   incorrectScoreIncrement();
   return newPlace;
