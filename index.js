@@ -148,13 +148,12 @@ const days = () => {
   return TotalDays;
 };
 
-if (localStorage.getItem("wordNum") === null) {
-  localStorage.setItem("wordNum", 0);
-}
-
 localStorage.setItem("currentDate", new Date().toDateString());
 
 function selectWord() {
+  if (localStorage.getItem("wordNum") === null) {
+    localStorage.setItem("wordNum", 0);
+  }
   let dateSeed = days();
   let wordNum = localStorage.getItem("wordNum");
   let selectedWord = words[days()][wordNum];
