@@ -386,8 +386,7 @@ function wordCompleted() {
       showResults();
     }, 1000);
   } else {
-    const nextWord = document.querySelector(".nextWord");
-    nextWord.removeAttribute("disabled");
+    convertToNextWord();
     wordNum++;
     localStorage.setItem("wordNum", wordNum);
     document.addEventListener("keyup", (e) => {
@@ -436,17 +435,20 @@ function updateStatsModal() {
   stats.innerHTML = `You had <span style='color: red'><b>${getIncorrectScore()}</b></span> incorrect guesses and <span style='color: cyan;'><b>${getRevealedScore()}</b></span> revealed letters for a total score of: <span style='color: green'>${getTotalScore()} </span><br><br><br> There will be three new words tomorrow :)`;
 }
 
+function convertToNextWord() {
+  const enterGuess = document.querySelector(".enter");
+  enterGuess.innerHTML = "Next Word";
+  enterGuess.addEventListener("click", () => {
+    location.reload();
+  });
+}
+
 if (localStorage.getItem(`revScore${new Date().toDateString()}`) === null) {
   localStorage.setItem(`revScore${new Date().toDateString()}`, 0);
 }
 if (localStorage.getItem(`incorScore${new Date().toDateString()}`) === null) {
   localStorage.setItem(`incorScore${new Date().toDateString()}`, 0);
 }
-
-const newGameButton = document.querySelector("#new-game");
-newGameButton.addEventListener("click", () => {
-  location.reload();
-});
 
 if (
   localStorage.getItem("completedDay") != localStorage.getItem("currentDate")

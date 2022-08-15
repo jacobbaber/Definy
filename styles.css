@@ -157,9 +157,9 @@ body {
   font-size: 25px;
 }
 
-.nextWord {
+.enter {
   margin-left: 2%;
-  width: 126px;
+  width: 135px;
   font-size: 25px;
 }
 
@@ -190,21 +190,6 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 1.6em;
-  width: 90px;
-}
-
-.enter {
-  color: black;
-  display: flex;
-  background-color: white;
-  margin-left: 1px;
-  margin-right: 1px;
-  margin-bottom: 3px;
-  height: 70px;
-  border-radius: 10%;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4em;
   width: 90px;
 }
 
@@ -247,17 +232,6 @@ body {
   }
 
   .back {
-    margin-right: 0.1vw;
-    margin-bottom: 0.3vw;
-    height: 14vw;
-    width: 14vw;
-    border-radius: 10%;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6em;
-  }
-
-  .enter {
     margin-right: 0.1vw;
     margin-bottom: 0.3vw;
     height: 14vw;
