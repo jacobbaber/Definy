@@ -364,7 +364,7 @@ function incorrectGuess() {
 const share = document.querySelector(".share");
 share.addEventListener("click", () => {
   navigator.share({
-    text: `I scored a ${getTotalScore()} in today's Definy. Play at playdefiny.com`,
+    text: `I scored a ${getTotalScore()} in today's Definy. Play at https://playdefiny.com`,
   });
 });
 
