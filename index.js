@@ -153,6 +153,8 @@ localStorage.setItem("currentDate", new Date().toDateString());
 function selectWord() {
   if (localStorage.getItem("wordNum") === null) {
     localStorage.setItem("wordNum", 0);
+  } else if (localStorage.getItem("wordNum") === NaN) {
+    localStorage.setItem("wordNum", 1);
   }
   let selectedWord = words[days()][parseInt(localStorage.getItem("wordNum"))];
   return selectedWord;
@@ -221,8 +223,8 @@ function letterBoxInputs(selectedWord) {
       place > 0 &&
       place <= letterBoxes.length &&
       !letterBoxes[place - 1].classList.contains("hintedLetter") &&
-      !letterBoxes[place - 1].classList.contains("guessedCorrectly")
-      && readyForInput
+      !letterBoxes[place - 1].classList.contains("guessedCorrectly") &&
+      readyForInput
     ) {
       --place;
       letterBoxes[place].classList.remove("animate__pulse");
@@ -243,8 +245,8 @@ function letterBoxInputs(selectedWord) {
 
       if (
         place < letterBoxes.length &&
-        !letterBoxes[place].classList.contains("hintedLetter")
-        && readyForInput
+        !letterBoxes[place].classList.contains("hintedLetter") &&
+        readyForInput
       ) {
         letterBoxes[place].classList.add("animate__pulse");
         letterBoxes[place].innerHTML = e.target.innerHTML;
@@ -268,8 +270,8 @@ function letterBoxInputs(selectedWord) {
       e.keyCode >= "65" &&
       e.keyCode <= "90" &&
       place < letterBoxes.length &&
-      !letterBoxes[place].classList.contains("hintedLetter")
-      && readyForInput
+      !letterBoxes[place].classList.contains("hintedLetter") &&
+      readyForInput
     ) {
       letterBoxes[place].classList.add("animate__pulse");
       letterBoxes[place].innerHTML = e.key.toUpperCase();
@@ -281,8 +283,8 @@ function letterBoxInputs(selectedWord) {
       place > 0 &&
       place <= letterBoxes.length &&
       !letterBoxes[place - 1].classList.contains("hintedLetter") &&
-      !letterBoxes[place - 1].classList.contains("guessedCorrectly")
-      && readyForInput
+      !letterBoxes[place - 1].classList.contains("guessedCorrectly") &&
+      readyForInput
     ) {
       --place;
       letterBoxes[place].classList.remove("animate__pulse");
@@ -295,7 +297,7 @@ function letterBoxInputs(selectedWord) {
       if (selectedWord == guess) {
         wordCompleted();
       } else {
-        place = incorrectGuess()
+        place = incorrectGuess();
       }
     }
   });
